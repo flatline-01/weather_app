@@ -1,0 +1,61 @@
+doctype html
+html
+    head
+        meta(name='viewport' content='width=device-width, initial-scale=1.0')
+        meta(name='keywords' content='weather, weather application, fall forecast, forecast weather, local weather')
+        meta(name='description' content='This weather app is one of best free weather apps with full features: Local weather, weather map (weather map service) and weather widgets.')
+        link(href='https://fonts.googleapis.com/icon?family=Material+Icons+Outlined' rel='stylesheet')
+        link(rel='stylesheet' href='styles/style.css')
+        title weather
+    body
+        div(class='container')
+            header(class='header row')
+                h3(class='header__title') WEATHER APP
+            main(class='main')
+                section(class='row centered')
+                    form(class='search-form' name='search-form')
+                        span(class='material-icons-outlined dark search-form__icon') search
+                        input(type='text' placeholder='London,GB' class='search-form__field' name='search-field' pattern='[A-Za-z]{1,},[A-Z]{2}')
+                section(class='place-date row')
+                    h1(class='place big-text' id='location')=`${data[0].city}, ${data[0].country}`
+                    h2(id='date')
+                section(class='weather-data row')
+                    div(class='weather-data__description col')
+                        img(src=`https://www.weatherbit.io/static/img/icons/${data[0].icon}.png` alt='current weather icon' title='weather icon' class='weather-data__description-icon' id='weather-icon')
+                        div(class='weather-data__description-text')
+                            h1(class='big' id='temp')=`${data[0].temp}°`
+                            h2(id='weather-description')=`${data[0].weather}`
+                    ul(class='weather-data__list col')
+                        li(class='list-elem')
+                            dl
+                                dt(id='hight')=`${data[0].hight} °`
+                                dd Hight
+                        li(class='list-elem')
+                            dl
+                                dt(id='low')=`${data[0].low}°`
+                                dd Low
+                        li(class='list-elem')
+                            dl
+                                dt(id='wind')=`${data[0].wind} mph`
+                                dd Wind
+                        li(class='list-elem')
+                            dl
+                                dt(id='humidity')=`${data[0].humidity} %`
+                                dd Humidity
+                        li(class='list-elem')
+                            dl
+                                dt(id='sunrise')=`${data[0].sunrise}`
+                                dd Sunrise
+                        li(class='list-elem')
+                            dl
+                                dt(id='sunset')=`${data[0].sunset}`
+                                dd Sunset
+                section(class='cards row')
+                     each i in data
+                         div(class='card')
+                             p= i.day
+                             img(src=`https://www.weatherbit.io/static/img/icons/${i.icon}.png` alt='weather icon' title='weather icon' class='card__img')
+                             p= `${i.temp}°`
+        script(src='scripts/script.js')
+        script(src='scripts/changeHtml.js')
+        script(src='scripts/fetchCity.js')

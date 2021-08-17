@@ -1,0 +1,164 @@
+@import 'vars.less';
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Century Gothic', serif;
+  font-size: @text-size;
+  color: @white-color;
+}
+
+body{
+  width: 100vw;
+  height: 100vh;
+}
+h1{
+  font-size: @h1-size;
+}
+h2{
+  font-size: @h2-size;
+}
+h3{
+  font-size: @h3-size;
+}
+h2, h3{
+  font-weight: 500;
+}
+.big{
+  font-size: calc(@h1-size * 1.5);
+}
+li{
+  list-style-type: none;
+}
+.dark{
+  color: @dark-color;
+}
+.textShadow{
+  text-shadow: 0 4px 3px rgba(0,0,0,0.4),
+  0 8px 13px rgba(0,0,0,0.1),
+  0 18px 23px rgba(0,0,0,0.1);
+}
+.container{
+  margin: 0 5%;
+  width: 90%;
+}
+.row{
+  .flex-wrap;
+  padding: 0.85%;
+}
+.flex-wrap{
+  display: flex;
+  flex-wrap: wrap;
+}
+.centered{
+  justify-content: center;
+  align-items: center;
+}
+
+.search-form{
+  width: 50%;
+  &__icon{
+    position: absolute;
+    margin-top: 1%;
+    margin-left: 1%;
+  }
+  &__field{
+    color: @dark-color;
+    width: 90%;
+    padding: 2% 2% 2% 10%;
+    border-radius: 50px;
+    border: none;
+    box-shadow: rgba(50, 50, 93, 0.25) 0 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    &:focus{
+      outline: none;
+    }
+  }
+}
+
+.place-date{
+  .textShadow;
+  flex-direction: column;
+}
+
+.col{
+  width: 48%;
+  .flex-wrap;
+  .centered;
+}
+
+.weather-data{
+  .textShadow;
+  padding: 2%;
+  &__description{
+    justify-content: space-around;
+    &-icon{
+      width: 20%;
+    }
+  }
+  &__list{
+    font-weight: 700;
+    padding: 2%;
+    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 5%;
+  }
+}
+.card, .weather-data__list{
+  border-radius: 10px;
+  background-color: rgba(255, 252, 252, 0.3);
+}
+.cards{
+  flex-wrap: nowrap;
+  overflow: auto;
+  white-space: nowrap;
+}
+
+.card{
+  .textShadow;
+  padding: 1%;
+  margin: 0.5%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  &__img{
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+   h1{
+     font-size: calc(@h1-size / 2);
+   }
+  h2{
+    font-size: calc(@h1-size / 2);
+  }
+  .big{
+    font-size: @h1-size;
+  }
+  .col{
+    width: 100%;
+  }
+  .weather-data{
+      &__list{
+        font-size: calc(@text-size * 1.5);
+        padding: 10%;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+      }
+  }
+  .row, .col{
+    margin-top: 3%;
+  }
+  .search-form{
+    &__field{
+      padding: 2% 2% 2% 20%;
+    }
+  }
+}
+
+@media screen and (max-width: 540px){
+  body{
+    height: 130vh;
+  }
+}
