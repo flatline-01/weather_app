@@ -4,13 +4,14 @@ let sunsetElem = document.getElementById('sunset');
 const sunriseTimestamp = sunriseElem.innerHTML;
 const sunsetTimestamp = sunsetElem.innerHTML;
 
-sunriseElem.innerHTML= transfer(sunriseTimestamp);
-sunsetElem.innerHTML = transfer(sunsetTimestamp);
+sunriseElem.innerHTML= convertToHoursAndMinutes(sunriseTimestamp);
+sunsetElem.innerHTML = convertToHoursAndMinutes(sunsetTimestamp);
 
 
 const weekDays = [ 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
-const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 
+                'October', 'November', 'December'];
 
 function generateDateStr(){
     let dateNow = new Date();
@@ -36,9 +37,7 @@ chandeBg();
 
 date.innerHTML = generateDateStr();
 
-function transfer(ms){
+function convertToHoursAndMinutes(ms){
     let date = new Date(ms * 1000);
     return `${date.getHours()}:${date.getMinutes()}`;
 }
-
-

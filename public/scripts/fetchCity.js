@@ -5,7 +5,9 @@ form.onsubmit = async (e) => {
     e.preventDefault();
     const arr = input.value.split(',');
     const data = JSON.stringify({city: arr[0], country: arr[1]});
-    changeHtml(await getCityWeather(data));
+    let res = await getCityWeather(data)
+    console.log(res);
+    updatePageData(res);
 }
 
 async function getCityWeather(data){
